@@ -2588,7 +2588,7 @@ function renderPassengerForms() {
         age: i === 0 ? 32 : "",
         gender: "Male",
         berthPreference: "No Preference",
-        isSenior: false
+        isSenior: i === 0 ? (32 >= 60) : false
       });
     }
   }
@@ -2657,11 +2657,11 @@ function renderPassengerForms() {
         </div>
       </div>
 
-      <label class="senior-check-row">
-        <input type="checkbox" class="p-senior-check" id="p-senior-${p.id}" ${p.isSenior ? 'checked' : ''}>
-        <span class="senior-check-label">Senior Citizen (Priority lower berth for passengers aged 60+)</span>
+      <div class="senior-check-row" style="pointer-events: none; user-select: none;">
+        <input type="checkbox" class="p-senior-check" id="p-senior-${p.id}" ${p.isSenior ? 'checked' : ''} disabled tabindex="-1">
+        <span class="senior-check-label">Senior Citizen (Auto-applied for age 60+ — priority lower berth)</span>
         <span class="senior-discount-badge" id="senior-badge-${p.id}" style="${p.isSenior ? 'display: inline-block;' : 'display: none;'}">Lower Berth Priority</span>
-      </label>
+      </div>
     `;
     
     const nameInput = card.querySelector(".p-name-input");
@@ -2683,7 +2683,7 @@ function renderPassengerForms() {
     
     ageInput?.addEventListener("input", (e) => {
       const ageNum = parseInt(e.target.value);
-      p.age = ageNum || "";
+      p.age = isNaN(ageNum) ? "" : ageNum;
       if (ageNum >= 1 && ageNum <= 99) {
         ageInput.classList.remove("is-invalid");
         ageInput.classList.add("is-valid");
@@ -2692,12 +2692,19 @@ function renderPassengerForms() {
           p.isSenior = true;
           if (seniorCheck) seniorCheck.checked = true;
           if (seniorBadge) seniorBadge.style.display = "inline-block";
-          if (berthSelect && p.berthPreference === "No Preference") {
+          if (berthSelect && (p.berthPreference === "No Preference" || !p.berthPreference)) {
             p.berthPreference = "Lower";
             berthSelect.value = "Lower";
           }
+        } else {
+          p.isSenior = false;
+          if (seniorCheck) seniorCheck.checked = false;
+          if (seniorBadge) seniorBadge.style.display = "none";
         }
       } else {
+        p.isSenior = false;
+        if (seniorCheck) seniorCheck.checked = false;
+        if (seniorBadge) seniorBadge.style.display = "none";
         ageInput.classList.remove("is-valid");
       }
     });
@@ -2716,13 +2723,6 @@ function renderPassengerForms() {
     
     berthSelect?.addEventListener("change", (e) => {
       p.berthPreference = e.target.value;
-    });
-    
-    seniorCheck?.addEventListener("change", (e) => {
-      p.isSenior = e.target.checked;
-      if (seniorBadge) {
-        seniorBadge.style.display = p.isSenior ? "inline-block" : "none";
-      }
     });
     
     container.appendChild(card);
@@ -3213,38 +3213,6 @@ function setupScreen6Listeners() {
   document.getElementById("btn-print-ticket")?.addEventListener("click", printTicket);
   document.getElementById("btn-share-ticket")?.addEventListener("click", shareTicket);
   
-  document.getElementById("btn-download-ticket")?.addEventListener("click", () => {
-    const pnr = appState.pnr;
-    const train = appState.selectedTrain;
-    const ticketText = `
-==================================================
-           EASYRAIL ELECTRONIC TICKET
-==================================================
-PNR Number    : ${pnr}
-Booking Status: ${appState.bookingStatus}
-Train         : ${train.name} (${train.number})
-Route         : ${appState.fromStation.code} -> ${appState.toStation.code}
-Date          : ${formatDate(appState.journeyDate)}
-Departure     : ${train.dep} | Arrival: ${train.arr}
-Class         : ${appState.selectedClass.name} (${appState.selectedClass.code})
-Total Fare    : ${formatCurrency(appState.fareBreakdown.total)}
-
-PASSENGERS:
-${appState.passengersList.map((p, i) => `${i+1}. ${p.name} (${p.age}/${p.gender}) - Coach: ${p.coach}, Seat: ${p.seatNo} (${p.assignedBerthType}) - Status: ${p.ticketStatus}`).join('\n')}
-
-Important: Please carry a valid original government photo ID during journey.
-==================================================
-    `.trim();
-    
-    const blob = new Blob([ticketText], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `EasyRail_Ticket_${pnr}.txt`;
-    link.click();
-    URL.revokeObjectURL(url);
-    showToast("Ticket downloaded as text file.", "📥");
-  });
   
   document.getElementById("btn-copy-pnr")?.addEventListener("click", () => {
     navigator.clipboard.writeText(appState.pnr).then(() => {

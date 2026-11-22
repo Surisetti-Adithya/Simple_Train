@@ -31,14 +31,25 @@ def get_html():
 
     <nav class="nav-group" aria-label="Main Navigation">
       <ul class="nav-links">
-        <li><button type="button" class="nav-link" id="nav-home-btn" data-i18n="navHome">Home</button></li>
         <li>
-          <button type="button" class="nav-link" id="nav-bookings-btn">
-            <span data-i18n="navBookings">My Bookings</span>
+          <button type="button" class="nav-link" id="nav-home-btn" title="Home" aria-label="Home">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text" data-i18n="navHome">Home</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="nav-link" id="nav-bookings-btn" title="My Bookings" aria-label="My Bookings">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span class="nav-text" data-i18n="navBookings">My Bookings</span>
             <span class="badge-count" id="bookings-count-badge">0</span>
           </button>
         </li>
-        <li><button type="button" class="nav-link" id="nav-help-btn" data-i18n="navHelp">Help</button></li>
+        <li>
+          <button type="button" class="nav-link" id="nav-help-btn" title="Help" aria-label="Help">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span class="nav-text" data-i18n="navHelp">Help</span>
+          </button>
+        </li>
       </ul>
 
       <div class="header-controls">
@@ -181,29 +192,14 @@ def get_html():
               </div>
             </div>
 
-            <!-- Quota Selection -->
+            <!-- Quota Selection (General & Tatkal only) -->
             <div class="quota-row">
-              <label class="input-label" data-i18n="labelQuota">Travel Quota</label>
               <div class="quota-grid" role="radiogroup">
                 <label class="quota-card active" id="quota-general-card">
                   <input type="radio" name="quota-select" value="General" checked>
                   <span class="quota-icon">👥</span>
                   <span class="quota-title" data-i18n="quotaGeneral">General</span>
                   <span class="quota-desc" data-i18n="quotaGeneralDesc">Standard booking</span>
-                </label>
-
-                <label class="quota-card" id="quota-ladies-card">
-                  <input type="radio" name="quota-select" value="Ladies">
-                  <span class="quota-icon">👩</span>
-                  <span class="quota-title" data-i18n="quotaLadies">Ladies</span>
-                  <span class="quota-desc" data-i18n="quotaLadiesDesc">Reserved for solo women</span>
-                </label>
-
-                <label class="quota-card" id="quota-senior-card">
-                  <input type="radio" name="quota-select" value="Senior Citizen">
-                  <span class="quota-icon">👴</span>
-                  <span class="quota-title" data-i18n="quotaSenior">Senior Citizen</span>
-                  <span class="quota-desc" data-i18n="quotaSeniorDesc">Lower berth priority (60+)</span>
                 </label>
 
                 <label class="quota-card" id="quota-tatkal-card" title="Tatkal opens at 10 AM for AC, 11 AM for Non-AC">
@@ -505,7 +501,7 @@ def get_html():
       </div>
 
       <!-- Submit Action -->
-      <div style="display: flex; justify-content: flex-end; margin-bottom: 40px;">
+      <div class="passenger-submit-row" style="display: flex; justify-content: flex-end; margin-bottom: 40px;">
         <button type="button" class="btn btn-primary btn-lg" id="btn-continue-to-payment" style="min-width: 240px;">
           <span data-i18n="continueToPayment">Continue to Payment →</span>
         </button>
@@ -804,12 +800,12 @@ def get_html():
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Passenger Name</th>
-                    <th>Age / Gender</th>
+                    <th>Passenger</th>
+                    <th>Age/Sex</th>
                     <th>Coach</th>
-                    <th>Berth / Seat</th>
-                    <th>Berth Type</th>
-                    <th>Current Status</th>
+                    <th>Seat</th>
+                    <th>Berth</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody id="ticket-passengers-tbody">
@@ -845,9 +841,6 @@ def get_html():
       <div class="ticket-actions-bar no-print">
         <button type="button" class="btn btn-primary" id="btn-print-ticket">
           🖨️ <span data-i18n="printTicket">Print Ticket</span>
-        </button>
-        <button type="button" class="btn btn-secondary" id="btn-download-ticket">
-          📥 <span data-i18n="downloadTicket">Download Ticket</span>
         </button>
         <button type="button" class="btn btn-outline" id="btn-share-ticket">
           📤 <span data-i18n="shareTicket">Share Ticket</span>

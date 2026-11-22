@@ -219,6 +219,10 @@ body.accessibility-mode .accessibility-banner {
   gap: 8px;
 }
 
+.nav-icon {
+  display: none;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -870,8 +874,8 @@ body.accessibility-mode .accessibility-banner {
 
 .quota-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
 .quota-card {
@@ -2091,21 +2095,24 @@ body.accessibility-mode .accessibility-banner {
   background: #f8faf8;
   border-radius: var(--radius-sm);
   border: 1px dashed var(--color-border);
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
 }
 
 .senior-check-row input[type="checkbox"] {
   width: 18px;
   height: 18px;
   accent-color: var(--color-primary);
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
 }
 
 .senior-check-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-text);
-  cursor: pointer;
+  cursor: default;
 }
 
 .senior-discount-badge {
@@ -2571,43 +2578,54 @@ body.accessibility-mode .accessibility-banner {
 .ticket-header-top {
   background: var(--color-primary);
   color: var(--color-white);
-  padding: 16px 24px;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
 }
 
 .ticket-brand-left {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .ticket-brand-left h3 {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+  word-break: break-word;
 }
 
 .simulated-badge-red {
   background: #ff4747;
   color: #fff;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  padding: 4px 10px;
+  padding: 4px 8px;
   border-radius: 4px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   border: 1px solid #ffffff;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .ticket-pnr-banner {
   background: var(--color-secondary);
-  padding: 14px 24px;
+  padding: 12px 20px;
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
 }
 
 .pnr-box-left {
@@ -2727,18 +2745,24 @@ body.accessibility-mode .accessibility-banner {
 
 .ticket-table th {
   background: #f7faf8;
-  padding: 10px 14px;
+  padding: 8px 10px;
   font-weight: 700;
+  font-size: 0.82rem;
   color: var(--color-muted);
   text-align: left;
   border-bottom: 1.5px solid var(--color-border);
+  word-break: break-word;
+  line-height: 1.2;
 }
 
 .ticket-table td {
-  padding: 12px 14px;
+  padding: 9px 10px;
   border-bottom: 1px solid #f0f4f1;
   color: var(--color-text);
   font-weight: 600;
+  font-size: 0.84rem;
+  word-break: break-word;
+  line-height: 1.25;
 }
 
 .ticket-security-footer {
@@ -3091,6 +3115,7 @@ body.accessibility-mode .accessibility-banner {
     overflow-x: hidden !important;
     max-width: 100vw !important;
     width: 100% !important;
+    position: relative !important;
   }
 
   .container {
@@ -3099,16 +3124,101 @@ body.accessibility-mode .accessibility-banner {
     box-sizing: border-box !important;
   }
 
-  .logo-text span {
-    display: none;
-  }
-  
-  .nav-link span {
-    display: none;
+  .site-header {
+    height: auto !important;
+    min-height: 56px !important;
+    padding: 6px 0 !important;
   }
 
   .header-inner {
-    gap: 8px;
+    gap: 6px !important;
+    padding: 0 2px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: space-between !important;
+  }
+
+  .brand-logo {
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .logo-icon {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+  }
+
+  .logo-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .logo-text h1 {
+    font-size: 1.12rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .logo-text span {
+    display: none !important;
+  }
+
+  .nav-group {
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-links {
+    gap: 3px !important;
+  }
+
+  .nav-icon {
+    display: inline-flex !important;
+  }
+
+  .nav-text {
+    display: none !important;
+  }
+
+  .nav-link {
+    padding: 6px 6px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .badge-count {
+    padding: 1px 5px !important;
+    font-size: 0.65rem !important;
+    margin-left: 2px !important;
+  }
+
+  .header-controls {
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+    margin-left: 2px !important;
+  }
+
+  .lang-selector-btn {
+    padding: 6px 8px !important;
+    min-height: 36px !important;
+    min-width: 44px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .lang-dropdown-wrapper {
+    position: relative !important;
+    flex-shrink: 0 !important;
+  }
+
+  .lang-menu {
+    right: 0 !important;
+    left: auto !important;
+    max-width: calc(100vw - 20px) !important;
+    z-index: 1000 !important;
   }
 
   .search-card {
@@ -3232,51 +3342,58 @@ body.accessibility-mode .accessibility-banner {
     grid-template-columns: 1fr;
   }
 
-  /* Ticket Card Mobile Fitting */
+  /* Ticket Card Mobile Fitting: Zero text cut-off, multiple line rearrangement & font scaling */
   .ticket-wrapper {
-    margin: 0 auto 20px;
+    margin: 0 auto 16px !important;
+    max-width: 100% !important;
   }
 
   .ticket-card {
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-sm) !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
   }
 
   .ticket-header-top {
-    padding: 12px 14px;
-    gap: 8px;
-    align-items: center;
+    padding: 10px 12px !important;
+    gap: 6px 10px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   .ticket-brand-left h3 {
-    font-size: 0.92rem;
-    line-height: 1.25;
+    font-size: 0.88rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
   }
 
   .simulated-badge-red {
-    font-size: 0.62rem;
-    padding: 3px 6px;
-    line-height: 1.2;
-    flex-shrink: 0;
+    font-size: 0.58rem !important;
+    padding: 2px 6px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    align-self: flex-start !important;
+    text-align: left !important;
   }
 
   .ticket-pnr-banner {
-    padding: 10px 14px !important;
-    gap: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   .pnr-box-left {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 6px !important;
   }
 
   .pnr-label {
-    font-size: 0.72rem;
+    font-size: 0.72rem !important;
   }
 
   .pnr-number {
@@ -3285,10 +3402,13 @@ body.accessibility-mode .accessibility-banner {
   }
 
   .pnr-meta-right {
-    font-size: 0.74rem !important;
-    text-align: right;
-    line-height: 1.35;
-    flex-shrink: 0;
+    font-size: 0.72rem !important;
+    text-align: left !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    border-top: 1px dashed rgba(23,107,72,0.18) !important;
+    padding-top: 6px !important;
+    margin-top: 2px !important;
   }
 
   .pnr-meta-txn {
@@ -3296,7 +3416,189 @@ body.accessibility-mode .accessibility-banner {
   }
 
   .ticket-body {
-    padding: 16px 14px;
+    padding: 14px 10px !important;
+  }
+
+  .ticket-journey-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    text-align: center !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .node-time {
+    font-size: 1.35rem !important;
+  }
+
+  .node-stn-code {
+    font-size: 1.05rem !important;
+  }
+
+  .node-stn-name {
+    font-size: 0.78rem !important;
+    word-break: break-word !important;
+  }
+
+  .train-title-big {
+    font-size: 0.92rem !important;
+    word-break: break-word !important;
+  }
+
+  .train-meta-pill {
+    font-size: 0.72rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  /* Compact Ticket Table on Mobile */
+  .ticket-passengers-table-wrap {
+    margin-bottom: 16px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .ticket-table {
+    width: 100% !important;
+    min-width: 280px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .ticket-table th {
+    padding: 6px 3px !important;
+    font-size: 0.68rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.15 !important;
+  }
+
+  .ticket-table td {
+    padding: 7px 3px !important;
+    font-size: 0.72rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.2 !important;
+  }
+
+  .ticket-table td .status-pill {
+    font-size: 0.62rem !important;
+    padding: 1px 4px !important;
+  }
+
+  /* Security Footer on Mobile */
+  .ticket-security-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding-top: 12px !important;
+  }
+
+  .qr-code-placeholder {
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .qr-svg {
+    width: 52px !important;
+    height: 52px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .qr-caption {
+    font-size: 0.68rem !important;
+    max-width: 100% !important;
+    line-height: 1.3 !important;
+  }
+
+  .ticket-total-fare {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+    border-top: 1px dashed var(--color-border) !important;
+    padding-top: 8px !important;
+  }
+
+  .ticket-fare-val {
+    font-size: 1.35rem !important;
+  }
+
+  /* Accessible Buttons & Controls Across All Screens on Mobile */
+  .selection-header-card {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px 14px !important;
+  }
+
+  .classes-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .btn-select-class {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+
+  .tatkal-status-banner {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .tatkal-demo-btns {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .passenger-submit-row {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: stretch !important;
+  }
+
+  #btn-continue-to-payment {
+    width: 100% !important;
+    min-width: 100% !important;
+    min-height: 48px !important;
+  }
+
+  .payment-tabs-nav {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    border-bottom: none !important;
+  }
+
+  .pay-tab-btn {
+    flex: 1 1 calc(50% - 8px) !important;
+    text-align: center !important;
+    padding: 10px 8px !important;
+    min-height: 44px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .failure-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .failure-actions .btn {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+
+  .ticket-actions-bar {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .ticket-actions-bar .btn {
+    width: 100% !important;
+    min-height: 46px !important;
+    justify-content: center !important;
   }
 }
 

@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-
 /* ==========================================================================
    EasyRail Design System & Base Variables
    ========================================================================== */
@@ -227,6 +226,10 @@ body.accessibility-mode .accessibility-banner {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.nav-icon {
+  display: none;
 }
 
 .nav-links {
@@ -880,8 +883,8 @@ body.accessibility-mode .accessibility-banner {
 
 .quota-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
 .quota-card {
@@ -2101,21 +2104,24 @@ body.accessibility-mode .accessibility-banner {
   background: #f8faf8;
   border-radius: var(--radius-sm);
   border: 1px dashed var(--color-border);
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
 }
 
 .senior-check-row input[type="checkbox"] {
   width: 18px;
   height: 18px;
   accent-color: var(--color-primary);
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
 }
 
 .senior-check-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-text);
-  cursor: pointer;
+  cursor: default;
 }
 
 .senior-discount-badge {
@@ -2581,43 +2587,54 @@ body.accessibility-mode .accessibility-banner {
 .ticket-header-top {
   background: var(--color-primary);
   color: var(--color-white);
-  padding: 16px 24px;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
 }
 
 .ticket-brand-left {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .ticket-brand-left h3 {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+  word-break: break-word;
 }
 
 .simulated-badge-red {
   background: #ff4747;
   color: #fff;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  padding: 4px 10px;
+  padding: 4px 8px;
   border-radius: 4px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   border: 1px solid #ffffff;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .ticket-pnr-banner {
   background: var(--color-secondary);
-  padding: 14px 24px;
+  padding: 12px 20px;
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
 }
 
 .pnr-box-left {
@@ -2737,18 +2754,24 @@ body.accessibility-mode .accessibility-banner {
 
 .ticket-table th {
   background: #f7faf8;
-  padding: 10px 14px;
+  padding: 8px 10px;
   font-weight: 700;
+  font-size: 0.82rem;
   color: var(--color-muted);
   text-align: left;
   border-bottom: 1.5px solid var(--color-border);
+  word-break: break-word;
+  line-height: 1.2;
 }
 
 .ticket-table td {
-  padding: 12px 14px;
+  padding: 9px 10px;
   border-bottom: 1px solid #f0f4f1;
   color: var(--color-text);
   font-weight: 600;
+  font-size: 0.84rem;
+  word-break: break-word;
+  line-height: 1.25;
 }
 
 .ticket-security-footer {
@@ -3101,6 +3124,7 @@ body.accessibility-mode .accessibility-banner {
     overflow-x: hidden !important;
     max-width: 100vw !important;
     width: 100% !important;
+    position: relative !important;
   }
 
   .container {
@@ -3109,16 +3133,101 @@ body.accessibility-mode .accessibility-banner {
     box-sizing: border-box !important;
   }
 
-  .logo-text span {
-    display: none;
-  }
-  
-  .nav-link span {
-    display: none;
+  .site-header {
+    height: auto !important;
+    min-height: 56px !important;
+    padding: 6px 0 !important;
   }
 
   .header-inner {
-    gap: 8px;
+    gap: 6px !important;
+    padding: 0 2px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: space-between !important;
+  }
+
+  .brand-logo {
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .logo-icon {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+  }
+
+  .logo-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .logo-text h1 {
+    font-size: 1.12rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .logo-text span {
+    display: none !important;
+  }
+
+  .nav-group {
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-links {
+    gap: 3px !important;
+  }
+
+  .nav-icon {
+    display: inline-flex !important;
+  }
+
+  .nav-text {
+    display: none !important;
+  }
+
+  .nav-link {
+    padding: 6px 6px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .badge-count {
+    padding: 1px 5px !important;
+    font-size: 0.65rem !important;
+    margin-left: 2px !important;
+  }
+
+  .header-controls {
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+    margin-left: 2px !important;
+  }
+
+  .lang-selector-btn {
+    padding: 6px 8px !important;
+    min-height: 36px !important;
+    min-width: 44px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .lang-dropdown-wrapper {
+    position: relative !important;
+    flex-shrink: 0 !important;
+  }
+
+  .lang-menu {
+    right: 0 !important;
+    left: auto !important;
+    max-width: calc(100vw - 20px) !important;
+    z-index: 1000 !important;
   }
 
   .search-card {
@@ -3242,51 +3351,58 @@ body.accessibility-mode .accessibility-banner {
     grid-template-columns: 1fr;
   }
 
-  /* Ticket Card Mobile Fitting */
+  /* Ticket Card Mobile Fitting: Zero text cut-off, multiple line rearrangement & font scaling */
   .ticket-wrapper {
-    margin: 0 auto 20px;
+    margin: 0 auto 16px !important;
+    max-width: 100% !important;
   }
 
   .ticket-card {
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-sm) !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
   }
 
   .ticket-header-top {
-    padding: 12px 14px;
-    gap: 8px;
-    align-items: center;
+    padding: 10px 12px !important;
+    gap: 6px 10px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   .ticket-brand-left h3 {
-    font-size: 0.92rem;
-    line-height: 1.25;
+    font-size: 0.88rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
   }
 
   .simulated-badge-red {
-    font-size: 0.62rem;
-    padding: 3px 6px;
-    line-height: 1.2;
-    flex-shrink: 0;
+    font-size: 0.58rem !important;
+    padding: 2px 6px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    align-self: flex-start !important;
+    text-align: left !important;
   }
 
   .ticket-pnr-banner {
-    padding: 10px 14px !important;
-    gap: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   .pnr-box-left {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 6px !important;
   }
 
   .pnr-label {
-    font-size: 0.72rem;
+    font-size: 0.72rem !important;
   }
 
   .pnr-number {
@@ -3295,10 +3411,13 @@ body.accessibility-mode .accessibility-banner {
   }
 
   .pnr-meta-right {
-    font-size: 0.74rem !important;
-    text-align: right;
-    line-height: 1.35;
-    flex-shrink: 0;
+    font-size: 0.72rem !important;
+    text-align: left !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    border-top: 1px dashed rgba(23,107,72,0.18) !important;
+    padding-top: 6px !important;
+    margin-top: 2px !important;
   }
 
   .pnr-meta-txn {
@@ -3306,7 +3425,189 @@ body.accessibility-mode .accessibility-banner {
   }
 
   .ticket-body {
-    padding: 16px 14px;
+    padding: 14px 10px !important;
+  }
+
+  .ticket-journey-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    text-align: center !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .node-time {
+    font-size: 1.35rem !important;
+  }
+
+  .node-stn-code {
+    font-size: 1.05rem !important;
+  }
+
+  .node-stn-name {
+    font-size: 0.78rem !important;
+    word-break: break-word !important;
+  }
+
+  .train-title-big {
+    font-size: 0.92rem !important;
+    word-break: break-word !important;
+  }
+
+  .train-meta-pill {
+    font-size: 0.72rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  /* Compact Ticket Table on Mobile */
+  .ticket-passengers-table-wrap {
+    margin-bottom: 16px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .ticket-table {
+    width: 100% !important;
+    min-width: 280px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .ticket-table th {
+    padding: 6px 3px !important;
+    font-size: 0.68rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.15 !important;
+  }
+
+  .ticket-table td {
+    padding: 7px 3px !important;
+    font-size: 0.72rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.2 !important;
+  }
+
+  .ticket-table td .status-pill {
+    font-size: 0.62rem !important;
+    padding: 1px 4px !important;
+  }
+
+  /* Security Footer on Mobile */
+  .ticket-security-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding-top: 12px !important;
+  }
+
+  .qr-code-placeholder {
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .qr-svg {
+    width: 52px !important;
+    height: 52px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .qr-caption {
+    font-size: 0.68rem !important;
+    max-width: 100% !important;
+    line-height: 1.3 !important;
+  }
+
+  .ticket-total-fare {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+    border-top: 1px dashed var(--color-border) !important;
+    padding-top: 8px !important;
+  }
+
+  .ticket-fare-val {
+    font-size: 1.35rem !important;
+  }
+
+  /* Accessible Buttons & Controls Across All Screens on Mobile */
+  .selection-header-card {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px 14px !important;
+  }
+
+  .classes-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .btn-select-class {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+
+  .tatkal-status-banner {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .tatkal-demo-btns {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .passenger-submit-row {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: stretch !important;
+  }
+
+  #btn-continue-to-payment {
+    width: 100% !important;
+    min-width: 100% !important;
+    min-height: 48px !important;
+  }
+
+  .payment-tabs-nav {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    border-bottom: none !important;
+  }
+
+  .pay-tab-btn {
+    flex: 1 1 calc(50% - 8px) !important;
+    text-align: center !important;
+    padding: 10px 8px !important;
+    min-height: 44px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .failure-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .failure-actions .btn {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+
+  .ticket-actions-bar {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .ticket-actions-bar .btn {
+    width: 100% !important;
+    min-height: 46px !important;
+    justify-content: center !important;
   }
 }
 
@@ -3930,11 +4231,9 @@ body.accessibility-mode .sarvam-modal-card {
   }
 }
 }
-
   </style>
 </head>
 <body>
-
 <!-- Accessibility Banner -->
 <div id="accessibility-banner" class="accessibility-banner" role="alert">
   <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
@@ -3966,14 +4265,25 @@ body.accessibility-mode .sarvam-modal-card {
 
     <nav class="nav-group" aria-label="Main Navigation">
       <ul class="nav-links">
-        <li><button type="button" class="nav-link" id="nav-home-btn" data-i18n="navHome">Home</button></li>
         <li>
-          <button type="button" class="nav-link" id="nav-bookings-btn">
-            <span data-i18n="navBookings">My Bookings</span>
+          <button type="button" class="nav-link" id="nav-home-btn" title="Home" aria-label="Home">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text" data-i18n="navHome">Home</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="nav-link" id="nav-bookings-btn" title="My Bookings" aria-label="My Bookings">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span class="nav-text" data-i18n="navBookings">My Bookings</span>
             <span class="badge-count" id="bookings-count-badge">0</span>
           </button>
         </li>
-        <li><button type="button" class="nav-link" id="nav-help-btn" data-i18n="navHelp">Help</button></li>
+        <li>
+          <button type="button" class="nav-link" id="nav-help-btn" title="Help" aria-label="Help">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span class="nav-text" data-i18n="navHelp">Help</span>
+          </button>
+        </li>
       </ul>
 
       <div class="header-controls">
@@ -4116,29 +4426,14 @@ body.accessibility-mode .sarvam-modal-card {
               </div>
             </div>
 
-            <!-- Quota Selection -->
+            <!-- Quota Selection (General & Tatkal only) -->
             <div class="quota-row">
-              <label class="input-label" data-i18n="labelQuota">Travel Quota</label>
               <div class="quota-grid" role="radiogroup">
                 <label class="quota-card active" id="quota-general-card">
                   <input type="radio" name="quota-select" value="General" checked>
                   <span class="quota-icon">👥</span>
                   <span class="quota-title" data-i18n="quotaGeneral">General</span>
                   <span class="quota-desc" data-i18n="quotaGeneralDesc">Standard booking</span>
-                </label>
-
-                <label class="quota-card" id="quota-ladies-card">
-                  <input type="radio" name="quota-select" value="Ladies">
-                  <span class="quota-icon">👩</span>
-                  <span class="quota-title" data-i18n="quotaLadies">Ladies</span>
-                  <span class="quota-desc" data-i18n="quotaLadiesDesc">Reserved for solo women</span>
-                </label>
-
-                <label class="quota-card" id="quota-senior-card">
-                  <input type="radio" name="quota-select" value="Senior Citizen">
-                  <span class="quota-icon">👴</span>
-                  <span class="quota-title" data-i18n="quotaSenior">Senior Citizen</span>
-                  <span class="quota-desc" data-i18n="quotaSeniorDesc">Lower berth priority (60+)</span>
                 </label>
 
                 <label class="quota-card" id="quota-tatkal-card" title="Tatkal opens at 10 AM for AC, 11 AM for Non-AC">
@@ -4440,7 +4735,7 @@ body.accessibility-mode .sarvam-modal-card {
       </div>
 
       <!-- Submit Action -->
-      <div style="display: flex; justify-content: flex-end; margin-bottom: 40px;">
+      <div class="passenger-submit-row" style="display: flex; justify-content: flex-end; margin-bottom: 40px;">
         <button type="button" class="btn btn-primary btn-lg" id="btn-continue-to-payment" style="min-width: 240px;">
           <span data-i18n="continueToPayment">Continue to Payment →</span>
         </button>
@@ -4739,12 +5034,12 @@ body.accessibility-mode .sarvam-modal-card {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Passenger Name</th>
-                    <th>Age / Gender</th>
+                    <th>Passenger</th>
+                    <th>Age/Sex</th>
                     <th>Coach</th>
-                    <th>Berth / Seat</th>
-                    <th>Berth Type</th>
-                    <th>Current Status</th>
+                    <th>Seat</th>
+                    <th>Berth</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody id="ticket-passengers-tbody">
@@ -4780,9 +5075,6 @@ body.accessibility-mode .sarvam-modal-card {
       <div class="ticket-actions-bar no-print">
         <button type="button" class="btn btn-primary" id="btn-print-ticket">
           🖨️ <span data-i18n="printTicket">Print Ticket</span>
-        </button>
-        <button type="button" class="btn btn-secondary" id="btn-download-ticket">
-          📥 <span data-i18n="downloadTicket">Download Ticket</span>
         </button>
         <button type="button" class="btn btn-outline" id="btn-share-ticket">
           📤 <span data-i18n="shareTicket">Share Ticket</span>
@@ -4930,9 +5222,7 @@ body.accessibility-mode .sarvam-modal-card {
 
 <!-- Toast Container -->
 <div class="toast-container" id="toast-container" role="status" aria-live="polite"></div>
-
   <script>
-
 /* ==========================================================================
    EasyRail Application Logic & State Architecture
    ========================================================================== */
@@ -7521,7 +7811,7 @@ function renderPassengerForms() {
         age: i === 0 ? 32 : "",
         gender: "Male",
         berthPreference: "No Preference",
-        isSenior: false
+        isSenior: i === 0 ? (32 >= 60) : false
       });
     }
   }
@@ -7590,11 +7880,11 @@ function renderPassengerForms() {
         </div>
       </div>
 
-      <label class="senior-check-row">
-        <input type="checkbox" class="p-senior-check" id="p-senior-${p.id}" ${p.isSenior ? 'checked' : ''}>
-        <span class="senior-check-label">Senior Citizen (Priority lower berth for passengers aged 60+)</span>
+      <div class="senior-check-row" style="pointer-events: none; user-select: none;">
+        <input type="checkbox" class="p-senior-check" id="p-senior-${p.id}" ${p.isSenior ? 'checked' : ''} disabled tabindex="-1">
+        <span class="senior-check-label">Senior Citizen (Auto-applied for age 60+ — priority lower berth)</span>
         <span class="senior-discount-badge" id="senior-badge-${p.id}" style="${p.isSenior ? 'display: inline-block;' : 'display: none;'}">Lower Berth Priority</span>
-      </label>
+      </div>
     `;
     
     const nameInput = card.querySelector(".p-name-input");
@@ -7616,7 +7906,7 @@ function renderPassengerForms() {
     
     ageInput?.addEventListener("input", (e) => {
       const ageNum = parseInt(e.target.value);
-      p.age = ageNum || "";
+      p.age = isNaN(ageNum) ? "" : ageNum;
       if (ageNum >= 1 && ageNum <= 99) {
         ageInput.classList.remove("is-invalid");
         ageInput.classList.add("is-valid");
@@ -7625,12 +7915,19 @@ function renderPassengerForms() {
           p.isSenior = true;
           if (seniorCheck) seniorCheck.checked = true;
           if (seniorBadge) seniorBadge.style.display = "inline-block";
-          if (berthSelect && p.berthPreference === "No Preference") {
+          if (berthSelect && (p.berthPreference === "No Preference" || !p.berthPreference)) {
             p.berthPreference = "Lower";
             berthSelect.value = "Lower";
           }
+        } else {
+          p.isSenior = false;
+          if (seniorCheck) seniorCheck.checked = false;
+          if (seniorBadge) seniorBadge.style.display = "none";
         }
       } else {
+        p.isSenior = false;
+        if (seniorCheck) seniorCheck.checked = false;
+        if (seniorBadge) seniorBadge.style.display = "none";
         ageInput.classList.remove("is-valid");
       }
     });
@@ -7649,13 +7946,6 @@ function renderPassengerForms() {
     
     berthSelect?.addEventListener("change", (e) => {
       p.berthPreference = e.target.value;
-    });
-    
-    seniorCheck?.addEventListener("change", (e) => {
-      p.isSenior = e.target.checked;
-      if (seniorBadge) {
-        seniorBadge.style.display = p.isSenior ? "inline-block" : "none";
-      }
     });
     
     container.appendChild(card);
@@ -8146,38 +8436,6 @@ function setupScreen6Listeners() {
   document.getElementById("btn-print-ticket")?.addEventListener("click", printTicket);
   document.getElementById("btn-share-ticket")?.addEventListener("click", shareTicket);
   
-  document.getElementById("btn-download-ticket")?.addEventListener("click", () => {
-    const pnr = appState.pnr;
-    const train = appState.selectedTrain;
-    const ticketText = `
-==================================================
-           EASYRAIL ELECTRONIC TICKET
-==================================================
-PNR Number    : ${pnr}
-Booking Status: ${appState.bookingStatus}
-Train         : ${train.name} (${train.number})
-Route         : ${appState.fromStation.code} -> ${appState.toStation.code}
-Date          : ${formatDate(appState.journeyDate)}
-Departure     : ${train.dep} | Arrival: ${train.arr}
-Class         : ${appState.selectedClass.name} (${appState.selectedClass.code})
-Total Fare    : ${formatCurrency(appState.fareBreakdown.total)}
-
-PASSENGERS:
-${appState.passengersList.map((p, i) => `${i+1}. ${p.name} (${p.age}/${p.gender}) - Coach: ${p.coach}, Seat: ${p.seatNo} (${p.assignedBerthType}) - Status: ${p.ticketStatus}`).join('\n')}
-
-Important: Please carry a valid original government photo ID during journey.
-==================================================
-    `.trim();
-    
-    const blob = new Blob([ticketText], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `EasyRail_Ticket_${pnr}.txt`;
-    link.click();
-    URL.revokeObjectURL(url);
-    showToast("Ticket downloaded as text file.", "📥");
-  });
   
   document.getElementById("btn-copy-pnr")?.addEventListener("click", () => {
     navigator.clipboard.writeText(appState.pnr).then(() => {
@@ -8929,7 +9187,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   showScreen(1);
 });
-
   </script>
 </body>
 </html>
