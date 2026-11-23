@@ -1,3 +1,4 @@
+import os
 import build_css
 import build_html
 import build_js
@@ -29,7 +30,7 @@ full_document = f"""<!DOCTYPE html>
 </html>
 """
 
-output_path = "/home/alumina/train/easyrail.html"
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "easyrail.html")
 with open(output_path, "w", encoding="utf-8") as f:
     f.write(full_document)
 
